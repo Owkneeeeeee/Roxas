@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Ara | Web Developer</title>
+    <style>
+        /* COPY OF INDEX PAGE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        :root {
+            --strawberry: #ff4757;
+            --strawberry-dark: #e84118;
+            --strawberry-light: #ff6b81;
+            --soft-pink: #fff5f7;
+            --dark-text: #2f3542;
+        }
+        body {
+            background-color: var(--soft-pink);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background: white;
+            box-shadow: 0 4px 20px rgba(255, 71, 87, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            height: 50px;
+            transition: transform 0.3s;
+        }
+        .logo:hover {
+            transform: rotate(15deg);
+        }
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--strawberry-dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 8px 12px;
+            transition: all 0.3s;
+        }
+        nav a:hover {
+            color: var(--strawberry);
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 12px;
+            background-color: var(--strawberry);
+            transition: width 0.3s;
+        }
+        nav a:hover::after {
+            width: calc(100% - 24px);
+        }
+
+        /* CONTACT-SPECIFIC STYLES */
+        .contact-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 18% 10% 10%;
+            min-height: 100vh;
+        }
+        .contact-content {
+            flex: 1;
+            padding-right: 60px;
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--strawberry-dark), var(--strawberry-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.1);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--strawberry-dark);
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--strawberry);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.2);
+        }
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, var(--strawberry), var(--strawberry-dark));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+        }
+        .contact-image {
+            width: 380px;
+            position: relative;
+        }
+        .contact-image img {
+            width: 100%;
+            border-radius: 20px;
+            border: 10px solid white;
+            box-shadow: 0 15px 40px rgba(255, 71, 87, 0.3);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 992px) {
+            .contact-container {
+                flex-direction: column;
+                padding-top: 25%;
+            }
+            .contact-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+                width: 100%;
+            }
+            .contact-image {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 768px) {
+            nav {
+                gap: 20px;
+            }
+            .contact-form {
+                padding: 30px;
+            }
+        }
+        @media (max-width: 576px) {
+            .contact-form {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header (Same as Index) -->
+    <header>
+        <img src="images/strawberry.png" alt="Strawberry Logo" class="logo">
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="contact.html" style="color: var(--strawberry-dark);">CONTACT</a>
+        </nav>
+    </header>
+
+    <!-- Contact Content -->
+    <main class="contact-container">
+        <div class="contact-content">
+            <h1>Get In Touch</h1>
+            
+            <form class="contact-form" action="send_message.php" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Contact Image -->
+        <div class="contact-image">
+            <img src="images/contactUs.jpg" alt="Mushroom Cartoon with a Telephone">
+        </div>
+    </main>
+</body>
+</html>
